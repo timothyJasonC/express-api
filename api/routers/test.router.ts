@@ -1,8 +1,21 @@
-import { Router } from "express";
-import { testController } from "../controllers/test.controller";
+import { Router } from 'express'
+import { TestController } from '../controllers/test.controller';
 
-const testRouter = Router()
+export class TestRouter {
+    private router: Router
+    private TestController: TestController
 
-testRouter.get('/', testController)
+    constructor() {
+        this.TestController = new TestController()
+        this.router = Router();
+        this.initializeRoutes();
+    }
 
-export {testRouter}
+    private initializeRoutes(): void {
+        this.router.get('/', this.TestController.Test)
+    }
+
+    getRouter(): Router {
+        return this.router
+    }
+}

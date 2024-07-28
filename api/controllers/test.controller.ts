@@ -1,12 +1,11 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-export const testController = async (req: Request, res: Response) => {
-    try {
-        res.send('ini test 2')
-    } catch (err) {
-        res.status(400).send({
-            status: 'error',
-            message: err
-        });
+export class TestController {
+    async Test(req: Request, res: Response) {
+        try {
+            res.send('ok')
+        } catch (error: any) {
+            res.send('error')
+        }
     }
 }

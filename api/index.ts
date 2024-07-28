@@ -1,18 +1,10 @@
-import express, { Application, Request, Response } from 'express'
-import router from './route'
-const app: Application = express()
-const PORT = 8000
+import App from './app';
 
-app.use(express.json())
+const main = () => {
+  // init db here
 
-app.get('/', (req:Request, res:Response) => {
-    res.send('test')
-})
+  const app = new App();
+  app.start();
+};
 
-app.use('/api', router)
-
-app.listen(PORT, () => {
-    console.log(`server started on  http://localhost:${PORT}/api`);
-})
-
-
+main();
